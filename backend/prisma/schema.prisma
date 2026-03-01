@@ -1,0 +1,75 @@
+// This is your Prisma schema file for Supabase (PostgreSQL)
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(USER)
+  avatar    String?  @default("")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tours     Tour[]
+
+  @@map("users")
+}
+
+model Tour {
+  id           String     @id @default(cuid())
+  title        String
+  description  String
+  price        Float
+  duration     Int
+  maxGroupSize Int
+  difficulty   Difficulty
+  location     String
+  category     Category
+  image        String     @default("https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1200&h=800&fit=crop")
+  imagePublicId String?   @default("")
+  highlights   String[]   @default([])
+  included     String[]   @default([])
+  notIncluded  String[]   @default([])
+  featured     Boolean    @default(false)
+  rating       Float      @default(0)
+  ratingsCount Int        @default(0)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  createdById String?
+  createdBy   User?   @relation(fields: [createdById], references: [id], onDelete: SetNull)
+
+  @@map("tours")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Difficulty {
+  easy
+  medium
+  hard
+}
+
+enum Category {
+  Beach
+  Adventure
+  Cultural
+  Luxury
+  Wildlife
+  City
+  Mountain
+  Other
+}

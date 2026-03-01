@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #ffffff;
+    color: #1a1a2e;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-navy-800 text-white px-6 py-3 font-body font-medium tracking-wide transition-all duration-300 hover:bg-navy-900 hover:shadow-lg active:scale-95;
+  }
+
+  .btn-gold {
+    @apply bg-gold-500 text-navy-900 px-6 py-3 font-body font-semibold tracking-wide transition-all duration-300 hover:bg-gold-400 hover:shadow-lg active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border-2 border-navy-800 text-navy-800 px-6 py-3 font-body font-medium tracking-wide transition-all duration-300 hover:bg-navy-800 hover:text-white;
+  }
+
+  .card {
+    @apply bg-white shadow-md hover:shadow-xl transition-shadow duration-300;
+  }
+
+  .input-field {
+    @apply w-full border border-gray-200 px-4 py-3 font-body text-gray-800 focus:outline-none focus:border-navy-800 transition-colors duration-200 bg-white;
+  }
+
+  .section-title {
+    @apply font-display text-4xl md:text-5xl font-light text-navy-900 leading-tight;
+  }
+
+  .badge {
+    @apply inline-block px-3 py-1 text-xs font-body font-semibold uppercase tracking-widest;
+  }
+
+  .badge-gold {
+    @apply badge bg-gold-500 text-navy-900;
+  }
+
+  .badge-navy {
+    @apply badge bg-navy-800 text-white;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #0f1f3d;
+}
+
+/* Page transitions */
+.page-enter {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Star rating */
+.star-filled { color: #e8b800; }
+.star-empty { color: #d1d5db; }
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #0f1f3d;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
