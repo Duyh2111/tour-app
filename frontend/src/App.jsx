@@ -15,6 +15,7 @@ import NotFoundPage from './pages/NotFoundPage';
 // Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useAuth();
@@ -37,6 +38,7 @@ function AppContent() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
+      <BackToTop />
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<HomePage />} />
