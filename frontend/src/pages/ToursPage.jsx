@@ -73,23 +73,33 @@ export default function ToursPage() {
     .filter(f => f && f !== 'All').length;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-cream-50">
       {/* Page Header */}
-      <div className="bg-navy-900 pt-36 pb-16 px-4 text-center">
-        <div className="flex items-center justify-center gap-3 mb-3">
-          <div className="h-px w-8 bg-gold-500" />
-          <span className="font-body text-gold-500 text-xs uppercase tracking-[0.3em]">Explore Vietnam</span>
-          <div className="h-px w-8 bg-gold-500" />
+      <div className="relative bg-navy-900 pt-36 pb-20 px-4 text-center overflow-hidden">
+        {/* Background image overlay */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1600&h=500&fit=crop')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-900/40 via-transparent to-navy-900" />
+        <div className="relative">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-px w-10 bg-gold-500" />
+            <span className="font-body text-gold-500 text-xs uppercase tracking-[0.3em]">Explore Vietnam</span>
+            <div className="h-px w-10 bg-gold-500" />
+          </div>
+          <h1 className="font-display text-5xl md:text-6xl text-white font-light">
+            All <em className="text-gold-400">Vietnam Tours</em>
+          </h1>
+          <p className="font-body text-white/45 mt-3 text-sm">
+            {total > 0 ? `${total} extraordinary experience${total !== 1 ? 's' : ''} await` : 'Discover extraordinary experiences'}
+          </p>
         </div>
-        <h1 className="font-display text-5xl text-white font-light">
-          All <em className="text-gold-400">Vietnam Tours</em>
-        </h1>
-        <p className="font-body text-white/50 mt-3">{total} extraordinary experiences await</p>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Search + Filter Bar */}
-        <div className="bg-white shadow-md p-4 mb-8 flex flex-wrap gap-4 items-center">
+        <div className="bg-white border border-gray-100 shadow-sm p-4 mb-8 flex flex-wrap gap-4 items-center">
           {/* Search */}
           <div className="relative flex-1 min-w-64">
             <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -137,7 +147,7 @@ export default function ToursPage() {
 
         {/* Expanded Filters */}
         {showFilters && (
-          <div className="bg-white shadow-md p-6 mb-8 grid grid-cols-1 md:grid-cols-4 gap-6 animate-fade-in">
+          <div className="bg-white border border-gray-100 shadow-sm p-6 mb-8 grid grid-cols-1 md:grid-cols-4 gap-6 animate-fade-in">
             {/* Category */}
             <div>
               <label className="font-body text-xs uppercase tracking-widest text-gray-500 block mb-3">Category</label>
