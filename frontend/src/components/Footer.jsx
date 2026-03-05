@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdExplore } from 'react-icons/md';
 import { FiFacebook, FiInstagram, FiYoutube, FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
+import site from '../config/site';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -76,7 +77,8 @@ export default function Footer() {
             <Link to="/" className="flex items-center gap-2 mb-5">
               <MdExplore className="text-gold-500 text-3xl" />
               <span className="font-display text-2xl font-semibold text-white">
-                Trần Gia<span className="text-gold-500"> Travel</span>
+                {site.name.split(' ').slice(0, -1).join(' ')}
+                <span className="text-gold-500"> {site.name.split(' ').at(-1)}</span>
               </span>
             </Link>
             <p className="font-body text-white/50 text-sm leading-relaxed mb-7">
@@ -85,9 +87,9 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { Icon: FiFacebook,  href: '#' },
-                { Icon: FiInstagram, href: '#' },
-                { Icon: FiYoutube,   href: '#' },
+                { Icon: FiFacebook,  href: site.social.facebook  || '#' },
+                { Icon: FiInstagram, href: site.social.instagram || '#' },
+                { Icon: FiYoutube,   href: site.social.youtube   || '#' },
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
@@ -165,19 +167,18 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <FiMail className="text-gold-500 flex-shrink-0 mt-0.5" size={14} />
-                <a href="mailto:hello@trangia.travel" className="font-body text-sm text-white/50 hover:text-gold-500 transition-colors">
-                  hello@trangia.travel
+                <a href={`mailto:${site.contact.email}`} className="font-body text-sm text-white/50 hover:text-gold-500 transition-colors">
+                  {site.contact.email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <FiPhone className="text-gold-500 flex-shrink-0 mt-0.5" size={14} />
-                <span className="font-body text-sm text-white/50">+84 (0) 28 1234 5678</span>
+                <span className="font-body text-sm text-white/50">{site.contact.phone}</span>
               </li>
               <li className="flex items-start gap-3">
                 <FiMapPin className="text-gold-500 flex-shrink-0 mt-0.5" size={14} />
                 <span className="font-body text-sm text-white/50 leading-relaxed">
-                  12 Nguyễn Huệ, Quận 1,<br />
-                  Hồ Chí Minh City, Vietnam
+                  {site.contact.address}
                 </span>
               </li>
             </ul>
@@ -189,7 +190,7 @@ export default function Footer() {
       <div className="border-t border-white/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-body text-xs text-white/30 tracking-wide">
-            © 2026 Trần Gia Travel. All rights reserved.
+            © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
           <div className="flex gap-6">
             {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map(item => (

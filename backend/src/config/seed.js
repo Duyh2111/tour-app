@@ -412,13 +412,9 @@ async function main() {
 
   console.log('\n🎉 Database seeded successfully!');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log('📧 Admin Login:');
-  console.log(`   Email:    ${admin.email}`);
-  console.log(`   Password: ${process.env.ADMIN_PASSWORD || 'Admin@123456'}`);
-  console.log('─────────────────────────────────────');
-  console.log('📧 User Login:');
-  console.log(`   Email:    ${user.email}`);
-  console.log('   Password: User@123456');
+  console.log(`📧 Admin email: ${admin.email}`);
+  console.log('   Password:   [set via ADMIN_PASSWORD env var]');
+  console.log(`📧 Sample user: ${user.email}`);
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 }
 

@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import API from '../utils/api';
 import Spinner from '../components/Spinner';
 import EnquiryModal from '../components/EnquiryModal';
+import site from '../config/site';
 import { FiMapPin, FiClock, FiUsers, FiStar, FiArrowLeft, FiCheck, FiX, FiMail, FiShield, FiRefreshCw } from 'react-icons/fi';
 import { MdOutlineTrendingUp } from 'react-icons/md';
 
@@ -236,10 +237,10 @@ export default function TourDetailPage() {
                 <p className="font-body text-white/60 text-xs mb-1">Need help choosing?</p>
                 <p className="font-display text-white text-lg font-light">Talk to our Vietnam experts</p>
                 <a
-                  href="mailto:hello@trangia.travel"
+                  href={`mailto:${site.contact.email}`}
                   className="inline-block mt-3 font-body text-xs text-gold-400 hover:text-gold-300 transition-colors tracking-wide"
                 >
-                  hello@trangia.travel
+                  {site.contact.email}
                 </a>
               </div>
             </div>

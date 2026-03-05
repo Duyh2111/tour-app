@@ -87,20 +87,22 @@ export default function LoginPage() {
             </Link>
           </p>
 
-          {/* Demo credentials */}
-          <div className="mt-8 p-5 bg-gray-50 border border-gray-100">
-            <p className="font-body text-xs uppercase tracking-widest text-gray-400 mb-3">Demo Accounts</p>
-            <div className="space-y-2.5">
-              <div className="flex items-center gap-3">
-                <span className="badge-gold text-[10px]">Admin</span>
-                <span className="font-body text-xs text-gray-600">admin@tourapp.com / Admin@123456</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="badge-navy text-[10px]">User</span>
-                <span className="font-body text-xs text-gray-600">user@tourapp.com / User@123456</span>
+          {/* Demo credentials — visible in development only */}
+          {import.meta.env.DEV && (
+            <div className="mt-8 p-5 bg-amber-50 border border-amber-200">
+              <p className="font-body text-xs uppercase tracking-widest text-amber-600 mb-3">⚙ Dev Mode — Demo Accounts</p>
+              <div className="space-y-2.5">
+                <div className="flex items-center gap-3">
+                  <span className="badge-gold text-[10px]">Admin</span>
+                  <span className="font-body text-xs text-gray-600">admin@tourapp.com / Admin@123456</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="badge-navy text-[10px]">User</span>
+                  <span className="font-body text-xs text-gray-600">user@tourapp.com / User@123456</span>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
 
